@@ -44,18 +44,23 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: false,
             field: 'comments'
         },
-        // 创建时间
-        time_create: {
-            type: DataTypes.DATE,
-            get() {
-                return moment(this.getDataValue('createdAt')).format('YYYY-MM-DD HH:mm:ss');
-            }
+        // 文章属性
+        class: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            field: 'class'
+        },
+        // 文章类型
+        type: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            field: 'type'
         },
         // 创建时间
         createdAt: {
             type: DataTypes.DATE,
             get() {
-                return moment(this.getDataValue('createdAt')).format('YYYY-MM-DD HH:mm:ss');
+                return moment(this.getDataValue('createdAt')).format('YYYY-MM-DD');
             }
         },
         // 更新时间
