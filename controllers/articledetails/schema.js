@@ -1,49 +1,31 @@
 const moment = require('moment');
 module.exports = function (sequelize, DataTypes) {
-    return sequelize.define('article', {
+    return sequelize.define('article_md', {
         // 文章ID
         id: {
             type: DataTypes.INTEGER,
             primaryKey: true,
             allowNull: true,
-            autoIncrement: true,
+            autoIncrement: false,
         },
-        // 文章标题
-        title: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            field: 'title',
-        },
-        // 文章作者
-        author: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            field: 'author'
-        },
-        // 文章内容
-        content: {
+        // 文章md
+        text: {
             type: DataTypes.TEXT,
             allowNull: false,
-            field: 'content'
-        },
-        // 文章分类
-        category: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            field: 'category'
+            field: 'text',
         },
         // 创建时间
         createdAt: {
             type: DataTypes.DATE,
             get() {
-                return moment(this.getDataValue('createdAt')).format('YYYY-MM-DD HH:mm:ss');
+                return moment(this.getDataValue('createdAt')).format('YYYY-MM-DD');
             }
         },
         // 更新时间
         updatedAt: {
             type: DataTypes.DATE,
             get() {
-                return moment(this.getDataValue('updatedAt')).format('YYYY-MM-DD HH:mm:ss');
+                return moment(this.getDataValue('updatedAt')).format('YYYY-MM-DD');
             }
         }
     }, {

@@ -56,6 +56,11 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: false,
             field: 'type'
         },
+        md_id: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            field: 'md_id'
+        },
         // 创建时间
         createdAt: {
             type: DataTypes.DATE,

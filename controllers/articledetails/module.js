@@ -9,18 +9,11 @@ const Article = Sequelize.import('./schema');
 class ArticleModel {
     /**
      * 查询取文章详情数据
-     * @param page // 文章分页
+     * @param id 
      * @returns {Promise<Model>}
      */
-    static async getArticleDetail(page) {
-        return await Article.findAll({
-            offset: page-1, 
-            limit: 10
-        })
-    }
-
-    static async watchAddLength(id,num) {
-        return await Article.update({ watch_length: num}, {'where':{'id':id}})
+    static async getArticleDetail(id) {
+        return await Article.findOne({ where: {id: id} })
     }
 }
 

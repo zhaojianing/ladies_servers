@@ -4,7 +4,7 @@ class handleError {
     static async catchError(ctx,err,msg) {
         ctx.response.status = 412;
         ctx.body = {
-            code: 200,
+            code: 412,
             msg: msg,
             data: err
         }
@@ -12,7 +12,7 @@ class handleError {
     static async responseError(ctx,msg) {
         ctx.response.status = 416;
         ctx.body = {
-            code: 200,
+            code: 416,
             msg: msg,
         }
     }

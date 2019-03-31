@@ -1,38 +1,21 @@
 const Router = require('koa-router')
 
-// const ArticleController = require('../controllers/article')
 const ArticleController = require('../controllers/article/index')
-
+const ArticleDetails = require('../controllers/articledetails/index')
 
 const router = new Router({
   prefix: '/shanyi'
 })
-router.get('/article/:page', ArticleController.getArticle);
-
 
 /**
 * 文章接口
 */
-// 创建文章接口（路由）
-// router.post('/article', ArticleController.create);
-// 获取文章详情接口（路由）
-// router.get('/article/:id', ArticleController.detail);
+// 分页 查询 首页 加载10篇
+router.get('/article/:page', ArticleController.getArticle);
+// 请求文章详情接口
+router.get('/details/:page', ArticleDetails.getArticle);
+// 文章观看数量加 1
+router.get('/watchadd/:page', ArticleController.watchAdd);
 
-// const router = require('koa-router')()
-// router.get('/', async (ctx, next) => {
-//   await ctx.render('index', {
-//     title: 'Hello Koa 2!'
-//   })
-// })
-
-// router.get('/string', async (ctx, next) => {
-//   ctx.body = 'koa2 string'
-// })
-
-// router.get('/json', async (ctx, next) => {
-//   ctx.body = {
-//     title: 'koa2 json'
-//   }
-// })
 
 module.exports = router
