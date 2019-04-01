@@ -2,6 +2,7 @@ const Router = require('koa-router')
 
 const ArticleController = require('../controllers/article/index')
 const ArticleDetails = require('../controllers/articledetails/index')
+const Voicemail = require('../controllers/voicemail/index')
 
 const router = new Router({
   prefix: '/shanyi'
@@ -16,6 +17,10 @@ router.get('/article/:page', ArticleController.getArticle);
 router.get('/details/:page', ArticleDetails.getArticle);
 // 文章观看数量加 1
 router.get('/watchadd/:page', ArticleController.watchAdd);
+// 评论留言获取
+router.get('/vcmid/:page', Voicemail.vcmId);
+// 添加留言
+router.post('/createvcm', Voicemail.createVcm);
 
 
 module.exports = router

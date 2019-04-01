@@ -7,6 +7,7 @@ class articleController {
      * @param ctx
      * @returns {Promise.<void>}
      */
+    // 获取首页信息
     static async getArticle(ctx) {
         let page = ctx.params.page;
         if (page) {
@@ -26,6 +27,7 @@ class articleController {
             handleError.responseError(ctx,'search page? eat ?')
         }
     }
+    // 增加观看人数
     static async watchAdd(ctx) {
         let watch = ctx.params.page;
         let id = watch.split('-')[0];

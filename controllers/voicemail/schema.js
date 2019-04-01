@@ -1,76 +1,66 @@
 const moment = require('moment');
 module.exports = function (sequelize, DataTypes) {
-    return sequelize.define('article_box', {
-        // 文章ID
+    return sequelize.define('article_voicemail', {
+        // ID
         id: {
             type: DataTypes.INTEGER,
             primaryKey: true,
             allowNull: true,
             autoIncrement: true,
         },
-        // 文章标题
-        title: {
+        // 头像
+        avatar: {
             type: DataTypes.STRING,
             allowNull: false,
-            field: 'title',
+            field: 'avatar',
         },
-        // 图片地址
-        img_url: {
+        // 昵称
+        name: {
             type: DataTypes.STRING,
             allowNull: false,
-            field: 'img_url'
+            field: 'name',
         },
-        // 评论个数
-        describe: {
+        // 网站 地址
+        url: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            field: 'url'
+        },
+        // 评论内容
+        content: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            field: 'content'
+        },
+        // 文章id
+        article_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
-            field: 'describe'
+            field: 'article_id'
         },
-        // 作者
-        author: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            field: 'author'
-        },
-        // 观看人数
-        watch_length: {
+        // 回复id
+        reply_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
-            field: 'watch_length'
+            field: 'reply_id'
         },
-        // 文章描述
-        comments: {
+        // 浏览器版本
+        version: {
             type: DataTypes.STRING,
             allowNull: false,
-            field: 'comments'
+            field: 'version'
         },
-        // 文章属性
-        class: {
+        // 浏览器版本
+        email: {
             type: DataTypes.STRING,
             allowNull: false,
-            field: 'class'
-        },
-        // 文章类型
-        type: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            field: 'type'
-        },
-        md_id: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            field: 'md_id'
-        },
-        voicemail_id: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            field: 'voicemail_id'
+            field: 'email'
         },
         // 创建时间
         createdAt: {
             type: DataTypes.DATE,
             get() {
-                return moment(this.getDataValue('createdAt')).format('YYYY-MM-DD');
+                return moment(this.getDataValue('createdAt')).format('YYYY-MM-DD HH:mm');
             }
         },
         // 更新时间
