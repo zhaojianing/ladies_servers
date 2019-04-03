@@ -13,6 +13,10 @@ const router = new Router({
 */
 // 分页 查询 首页 加载10篇
 router.get('/article/:page', ArticleController.getArticle);
+// 评论查询
+router.get('/watchComment/:page', ArticleController.watchComment);
+// 更新评论
+router.get('/updataComment/:page', ArticleController.updataComment);
 // 请求文章详情接口
 router.get('/details/:page', ArticleDetails.getArticle);
 // 文章观看数量加 1

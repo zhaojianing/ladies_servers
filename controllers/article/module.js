@@ -14,13 +14,36 @@ class ArticleModel {
      */
     static async getArticleDetail(page) {
         return await Article.findAll({
-            offset: page-1, 
+            offset: page - 1,
             limit: 10
         })
     }
 
-    static async watchAddLength(id,num) {
-        return await Article.update({ watch_length: num}, {'where':{'id':id}})
+    static async watchAddLength(id, num) {
+        return await Article.update({
+            watch_length: num
+        }, {
+            'where': {
+                'id': id
+            }
+        })
+    }
+
+    static async watchComment(id) {
+        return await Article.findAll({
+            where: {
+                'id':id
+            }
+        })
+    }
+    static async updataComment(id,num) {
+        return await Article.update({
+            describe: num
+        }, {
+            'where': {
+                'id': id
+            }
+        })
     }
 }
 
