@@ -18,7 +18,8 @@ class ArticleModel {
             version: data.version, // 浏览器版本
             avatar: data.avatar || '',
             url: data.url || '',
-            reply_id: data.reply_id || 1,
+            // reply_id: data.reply_id || 1,
+            reply_id: Date.parse( new Date() ).toString().substr(0,10),
             createdAt: data.createdAt,
             updatedAt: data.createdAt,
             email: data.email || ''

@@ -3,6 +3,7 @@ const Router = require('koa-router')
 const ArticleController = require('../controllers/article/index')
 const ArticleDetails = require('../controllers/articledetails/index')
 const Voicemail = require('../controllers/voicemail/index')
+const Callback = require('../controllers/callback/index')
 
 const router = new Router({
   prefix: '/shanyi'
@@ -27,6 +28,8 @@ router.get('/vcmid/:page', Voicemail.vcmId);
 router.post('/createvcm', Voicemail.createVcm);
 // 根据文章热度查询
 router.get('/hot', ArticleController.getHotArticle);
+// 查询回复内容
+router.get('/callback/:page', Callback.getcallback);
 
 
 module.exports = router
