@@ -25,6 +25,8 @@ router.get('/watchadd/:page', ArticleController.watchAdd);
 router.get('/vcmid/:page', Voicemail.vcmId);
 // 添加留言
 router.post('/createvcm', Voicemail.createVcm);
+// 根据文章热度查询
+router.get('/hot', ArticleController.getHotArticle);
 
 
 module.exports = router

@@ -11,7 +11,7 @@ class articleController {
     static async getArticle(ctx) {
         let page = ctx.params.page;
         if (page) {
-            try{
+            try {
                 // 查询文章详情模型
                 let data = await ArticleModel.getArticleDetail(page);
                 ctx.response.status = 200;
@@ -20,11 +20,11 @@ class articleController {
                     msg: '查询成功',
                     data
                 }
-            } catch(err) {
-                handleError.catchError(ctx,err,'查询失败')
+            } catch (err) {
+                handleError.catchError(ctx, err, '查询失败')
             }
         } else {
-            handleError.responseError(ctx,'search page? eat ?')
+            handleError.responseError(ctx, 'search page? eat ?')
         }
     }
     // 增加观看人数
@@ -33,27 +33,27 @@ class articleController {
         let id = watch.split('-')[0];
         let num = watch.split('-')[1];
         if (watch) {
-            try{
+            try {
                 // 查询文章详情模型
-                let data = await ArticleModel.watchAddLength(id,num);
+                let data = await ArticleModel.watchAddLength(id, num);
                 ctx.response.status = 200;
                 ctx.body = {
                     code: 200,
                     msg: '观看人数加1成功',
                     data: 'ok'
                 }
-            } catch(err) {
-                handleError.catchError(ctx,err,'查询失败')
+            } catch (err) {
+                handleError.catchError(ctx, err, '查询失败')
             }
         } else {
-            handleError.responseError(ctx,'search page? eat ?')
+            handleError.responseError(ctx, 'search page? eat ?')
         }
     }
     // 查询评论人数
     static async watchComment(ctx) {
         let id = ctx.params.page;
         if (id) {
-            try{
+            try {
                 // 查询文章详情模型
                 let data = await ArticleModel.watchComment(id);
                 ctx.response.status = 200;
@@ -62,11 +62,11 @@ class articleController {
                     msg: '查询评论成功',
                     data: data
                 }
-            } catch(err) {
-                handleError.catchError(ctx,err,'查询失败')
+            } catch (err) {
+                handleError.catchError(ctx, err, '查询失败')
             }
         } else {
-            handleError.responseError(ctx,'search page? eat ?')
+            handleError.responseError(ctx, 'search page? eat ?')
         }
     }
     // 更新评论人数
@@ -75,20 +75,35 @@ class articleController {
         let id = watch.split('-')[0];
         let num = watch.split('-')[1];
         if (id) {
-            try{
+            try {
                 // 查询文章详情模型
-                let data = await ArticleModel.updataComment(id,num);
+                let data = await ArticleModel.updataComment(id, num);
                 ctx.response.status = 200;
                 ctx.body = {
                     code: 200,
                     msg: '更新评论成功',
                     data: data
                 }
-            } catch(err) {
-                handleError.catchError(ctx,err,'查询失败')
+            } catch (err) {
+                handleError.catchError(ctx, err, '查询失败')
             }
         } else {
-            handleError.responseError(ctx,'search page? eat ?')
+            handleError.responseError(ctx, 'search page? eat ?')
+        }
+    }
+    // 获取热度文章信息
+    static async getHotArticle(ctx) {
+        try {
+            // 查询文章详情模型
+            let data = await ArticleModel.getHotArticleDetail();
+            ctx.response.status = 200;
+            ctx.body = {
+                code: 200,
+                msg: '查询最热文章成功',
+                data
+            }
+        } catch (err) {
+            handleError.catchError(ctx, err, '查询最热文章失败')
         }
     }
 }

@@ -15,7 +15,10 @@ class ArticleModel {
     static async getArticleDetail(page) {
         return await Article.findAll({
             offset: page - 1,
-            limit: 10
+            limit: 10,
+            order: [
+                ['createdAt', 'DESC']
+            ]
         })
     }
 
@@ -43,6 +46,14 @@ class ArticleModel {
             'where': {
                 'id': id
             }
+        })
+    }
+    static async getHotArticleDetail() {
+        return await Article.findAll({
+            limit: 8,
+            order: [
+                ['watch_length', 'DESC']
+            ]
         })
     }
 }
