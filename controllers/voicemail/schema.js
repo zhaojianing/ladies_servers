@@ -38,7 +38,7 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: false,
             field: 'article_id'
         },
-        // 回复id
+        // 回复总数
         reply_id: {
             type: DataTypes.INTEGER,
             allowNull: false,

@@ -25,6 +25,15 @@ class ArticleModel {
             email: data.email || ''
         })
     }
+    static async updateVcm(id,num) {
+        return await Article.update({
+            reply_id: num
+        }, {
+            'where': {
+                'id': id
+            }
+        })
+    }
 }
 
 module.exports = ArticleModel

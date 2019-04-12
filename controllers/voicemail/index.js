@@ -54,6 +54,32 @@ class articleController {
         }
 
     }
+    // 更新评论总数
+    static async updateVcm(ctx) {
+        // 接收客服端
+        let watch = ctx.params.page;
+        let id = watch.split('-')[0];
+        let num = watch.split('-')[1];
+        if (watch) {
+            try {
+                // 创建文章模型
+                const data = await ArticleModel.updateVcm(id,num);
+
+                ctx.response.status = 200;
+                ctx.body = {
+                    code: 200,
+                    msg: '更新回复成功',
+                    data
+                }
+
+            } catch (err) {
+                handleError.catchError(ctx,err,'更新回复失败')
+            }
+        } else {
+            handleError.responseError(ctx,'search page? eat ?')
+        }
+
+    }
 }
 
 module.exports = articleController

@@ -24,12 +24,16 @@ router.get('/details/:page', ArticleDetails.getArticle);
 router.get('/watchadd/:page', ArticleController.watchAdd);
 // 评论留言获取
 router.get('/vcmid/:page', Voicemail.vcmId);
+// 更新评论单个总数同居
+router.get('/updateVcm/:page', Voicemail.updateVcm);
 // 添加留言
 router.post('/createvcm', Voicemail.createVcm);
 // 根据文章热度查询
 router.get('/hot', ArticleController.getHotArticle);
 // 查询回复内容
 router.get('/callback/:page', Callback.getcallback);
+// 添加回复内容
+router.post('/createCall', Callback.createCall);
 
 
 module.exports = router
