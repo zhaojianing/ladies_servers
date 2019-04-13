@@ -4,6 +4,7 @@ const ArticleController = require('../controllers/article/index')
 const ArticleDetails = require('../controllers/articledetails/index')
 const Voicemail = require('../controllers/voicemail/index')
 const Callback = require('../controllers/callback/index')
+const Message = require('../controllers/message/index')
 
 const router = new Router({
   prefix: '/shanyi'
@@ -34,6 +35,8 @@ router.get('/hot', ArticleController.getHotArticle);
 router.get('/callback/:page', Callback.getcallback);
 // 添加回复内容
 router.post('/createCall', Callback.createCall);
-
+// 查询留言面板
+router.get('/message/:page', Message.getMessage);
+router.post('/createmessage', Message.createMessage);
 
 module.exports = router
