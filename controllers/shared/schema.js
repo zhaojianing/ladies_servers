@@ -1,6 +1,6 @@
 const moment = require('moment');
 module.exports = function (sequelize, DataTypes) {
-    return sequelize.define('article_box', {
+    return sequelize.define('shared_data', {
         // 文章ID
         id: {
             type: DataTypes.INTEGER,
@@ -8,73 +8,35 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: true,
             autoIncrement: true,
         },
-        // 文章标题
-        title: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            field: 'title',
-        },
-        // 图片地址
-        img_url: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            field: 'img_url'
-        },
-        // 评论个数
-        describe: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            field: 'describe'
-        },
         // 作者
         author: {
             type: DataTypes.STRING,
             allowNull: false,
-            field: 'author'
+            field: 'author',
         },
-        // 观看人数
-        watch_length: {
+        // 课程内容
+        course: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            field: 'course'
+        },
+        // 课程内容
+        content: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            field: 'content'
+        },
+        // 账号
+        username: {
             type: DataTypes.INTEGER,
             allowNull: false,
-            field: 'watch_length'
+            field: 'username'
         },
-        // 文章描述
-        comments: {
+        // 密码
+        password: {
             type: DataTypes.STRING,
             allowNull: false,
-            field: 'comments'
-        },
-        // 文章属性
-        class: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            field: 'class'
-        },
-        // 文章类型
-        type: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            field: 'type'
-        },
-        md_id: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            field: 'md_id'
-        },
-        classname: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            field: 'classname'
-        },
-        typename: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            field: 'typename'
-        },
-        voicemail_id: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            field: 'voicemail_id'
+            field: 'password'
         },
         // 创建时间
         createdAt: {

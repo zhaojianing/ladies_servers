@@ -5,6 +5,7 @@ const ArticleDetails = require('../controllers/articledetails/index')
 const Voicemail = require('../controllers/voicemail/index')
 const Callback = require('../controllers/callback/index')
 const Message = require('../controllers/message/index')
+const Shared = require('../controllers/shared/index')
 
 const router = new Router({
   prefix: '/shanyi'
@@ -38,5 +39,8 @@ router.post('/createCall', Callback.createCall);
 // 查询留言面板
 router.get('/message/:page', Message.getMessage);
 router.post('/createmessage', Message.createMessage);
+
+// 账号密码查询
+router.get('/getshared', Shared.getShared);
 
 module.exports = router
