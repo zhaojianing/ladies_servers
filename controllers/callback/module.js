@@ -15,6 +15,14 @@ class ArticleModel {
             }
         })
     }
+    static async getcallEmail(id) {
+        return await Article.findAll({
+            where: {
+                'id': id
+            }
+        })
+    }
+    
     // 添加 回复评论
     static async createCall(data) {
         return await Article.create({
@@ -24,6 +32,7 @@ class ArticleModel {
             vo_name: data.vo_name, // 被评论者名称
             comments: data.comments, // 评论内容
             getv: data.getv || '',  // 浏览器版本号
+            vcmEmail: data.vcmEmail,
             createdAt: data.createdAt,
             updatedAt: data.createdAt,
         })

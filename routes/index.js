@@ -36,6 +36,10 @@ router.get('/hot', ArticleController.getHotArticle);
 router.get('/callback/:page', Callback.getcallback);
 // 添加回复内容
 router.post('/createCall', Callback.createCall);
+// 查询邮箱
+router.get('/getEmail/:page', Voicemail.getEmail);
+// 查询邮箱
+router.get('/getCallEmail/:page', Callback.getcallEmail);
 // 查询留言面板
 router.get('/message/:page', Message.getMessage);
 router.post('/createmessage', Message.createMessage);

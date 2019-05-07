@@ -32,6 +32,12 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: false,
             field: 'vo_name'
         },
+        // 被关联的邮箱
+        vcmEmail: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            field: 'vcmEmail'
+        },
         // 评论内容
         comments: {
             type: DataTypes.STRING,

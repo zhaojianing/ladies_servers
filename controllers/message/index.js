@@ -1,5 +1,6 @@
 const ArticleModel = require('./module')
 const handleError = require('../../util/error')
+const handleEmail = require('../../util/sendEmail')
 
 class message {
     // 获取回复信息
@@ -32,6 +33,8 @@ class message {
                 const ret = await ArticleModel.createMessage(req);
                 // 把刚刚新建的文章ID查询文章详情，且返回新创建的文章信息
                 const data = await ArticleModel.getMessage(1);
+                // 发送邮件
+                handleEmail.sendEm('zjn1030@iCloud.com','来自'+req.name+'的留言','评论内容：'+req.content);
 
                 ctx.response.status = 200;
                 ctx.body = {

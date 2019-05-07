@@ -7,6 +7,13 @@ const Article = Sequelize.import('./schema');
 // Article.sync({force: false});
 
 class ArticleModel {
+    static async getEmail(id) {
+        return await Article.findAll({
+            where: {
+                'id': id
+            }
+        })
+    }
     static async vcmId(id) {
         return await Article.findAll({'where':{'article_id':id},'order': [['createdAt', 'DESC']]})
     }
